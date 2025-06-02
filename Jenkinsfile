@@ -28,17 +28,12 @@ pipeline {
                     reuseNode true // Reuse the same node for this stage
                 }
             }
-    steps {
-        sh '''
-        echo "Test Stage"
-        if [ -f build/index.html ]; then
-            echo "File exists."
-        else
-            echo "File does not exist."
-            exit 1
-        fi
-        npm test
-        '''
+            steps {
+                    sh '''
+                    echo "Test Stage"
+                    test -f build/index.html
+                    npm test
+                    '''
     }
 }
     }
