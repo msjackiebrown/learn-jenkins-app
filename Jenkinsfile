@@ -22,13 +22,17 @@ pipeline {
             }
         }
     stage('Test') {
-
-        steps {
-            sh'''
-            echo "Test Stage"
-            grep  "build/index.html"
-            '''
-        }
+    steps {
+        sh '''
+        echo "Test Stage"
+        if [ -f build/index.html ]; then
+            echo "File exists."
+        else
+            echo "File does not exist."
+            exit 1
+        fi
+        '''
     }
+}
     }
 }
