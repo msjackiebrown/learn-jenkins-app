@@ -31,6 +31,7 @@ pipeline {
             echo "File does not exist."
             exit 1
         fi
+        npm test
         '''
     }
 }
