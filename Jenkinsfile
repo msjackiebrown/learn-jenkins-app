@@ -22,6 +22,12 @@ pipeline {
             }
         }
     stage('Test') {
+             agent {
+                docker {
+                    image 'node:18-alpine' // Use Node.js 18 Alpine image
+                    reuseNode true // Reuse the same node for this stage
+                }
+            }
     steps {
         sh '''
         echo "Test Stage"
