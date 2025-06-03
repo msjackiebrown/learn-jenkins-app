@@ -35,6 +35,20 @@ pipeline {
                     npm test
                     '''
     }
+    stage('E2E') {
+             agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.52.0-noble' // Use Node.js 18 Alpine image
+                    reuseNode true // Reuse the same node for this stage
+                }
+            }
+            steps {
+                    sh '''
+                    npm install -g serve
+                    serve -s build
+                    npx playwright test
+                    '''
+    }
 }
     }
     post {
