@@ -20,7 +20,10 @@ pipeline {
                 '''
             }
         } */
-        stage('Test') {
+
+       stage('Run Tests') {
+        parallel {
+stage('Test') {
             agent {
                 docker {
                     image 'node:18-alpine' // Use Node.js 18 Alpine image
@@ -51,6 +54,9 @@ pipeline {
                 '''
             }
         }
+        }
+       }
+        
     } // closes stages
 
     post {
