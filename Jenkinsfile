@@ -21,7 +21,7 @@ pipeline {
 
             }
         } */
-    stage('Test') {
+        stage('Test') {
              agent {
                 docker {
                     image 'node:18-alpine' // Use Node.js 18 Alpine image
@@ -45,7 +45,7 @@ pipeline {
             steps {
                     sh '''
                     npm install -g serve
-                    serve -s build
+                    serve -s build &
                     npx playwright test
                     '''
     }
