@@ -40,16 +40,14 @@
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.6"
   },
-  "jest": {
-    "reporters": [
-      "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": "jest-results",
-          "outputName": "junit.xml"
-        }
-      ]
-    ]
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "outputDirectory": "jest-results",
+    "outputName": "junit.xml",
+    "uniqueOutputName": "false",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true"
   }
 }
