@@ -3,6 +3,7 @@ pipeline {
     environment {
 
         NETLIFY_SITE_ID = '89a8dde4-e4b4-4df7-ac42-496c77ad0572' // Netlify site ID
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token') // Netlify auth token from Jenkins credentials
     }
 
     stages {
