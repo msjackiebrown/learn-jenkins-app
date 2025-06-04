@@ -97,7 +97,6 @@ pipeline {
                 timeout(15, "MINUTES") {
                     input message: 'Approve deployment to staging?', ok: 'Deploy Now'
                 }
-    input message: 'Approve deployment to production?', ok: 'Deploy Now'
 }
             }
         }
