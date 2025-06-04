@@ -93,8 +93,7 @@ pipeline {
               stage('Approval') {
     
             steps {
-                sh '''
-                '''
+                input message: 'Approve deployment to production?', ok: 'Deploy Now'
             }
         }
 
