@@ -84,20 +84,18 @@ pipeline {
                 echo " Small change"
                 npm install netlify-cli@20.1.1
                 node_modules/.bin/netlify --version
-                echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
+                echo "Deploying to staging. Site ID: $NETLIFY_SITE_ID"
                 node_modules/.bin/netlify status
                 node_modules/.bin/netlify deploy --dir=build 
                 '''
             }
         }
-              stage('Approval') {
-    
-            steps {
 
-                timeout(15, "MINUTES") {
-                    input message: 'Approve deployment to staging?', ok: 'Deploy Now'
+        stage('Approval') {
+            steps {
+                timeout(time: 15, unit: 'MINUTES') {
+                    input message: 'Approve deployment to production?', ok: 'Deploy Now'
                 }
-}
             }
         }
 
