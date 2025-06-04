@@ -34,9 +34,7 @@ pipeline {
                             reuseNode true
                         }
                     }
-                    environment {
-                        CI_ENVIRONMENT_URL = 'https://beautiful-chaja-e4fbb0.netlify.app'
-                    }
+                    
                     steps {
                         sh '''
                         echo "Test Stage"
@@ -100,6 +98,9 @@ pipeline {
                     reuseNode true
                 }
             }
+            environment {
+                        CI_ENVIRONMENT_URL = 'https://beautiful-chaja-e4fbb0.netlify.app'
+                    }
             steps {
                 sh '''
                 npx playwright test --reporter=html
