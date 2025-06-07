@@ -5,6 +5,11 @@ pipeline {
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
+    options {
+        // This will clean the workspace before the pipeline starts
+        cleanWs()
+    }
+
     stages {
 
         stage ('Docker') {
