@@ -45,6 +45,8 @@ pipeline {
                         sh '''
                         echo "Test Stage"
                         test -f build/index.html
+                        set JEST_JUNIT_OUTPUT_DIR=jest-results
+                        set JEST_JUNIT_OUTPUT_NAME=junit.xml
                         npm test
                         '''
                     }
