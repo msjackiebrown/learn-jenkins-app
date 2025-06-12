@@ -3,8 +3,6 @@ pipeline {
     environment {
         NETLIFY_SITE_ID = '89a8dde4-e4b4-4df7-ac42-496c77ad0572'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
-        AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
     }
 
     stages {
