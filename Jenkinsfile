@@ -98,12 +98,11 @@ pipeline {
                 netlify status
                 netlify deploy --dir=build --json >deploy-output.json
                 node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json
-                '''
-                  script {
-                CI_ENVIRONMENT_URL=$(node-jq -r '.deploy_url' deploy-output.json)
-                    npx playwright test  --reporter=html
-
-            }
+                '''                script {
+                    def deployOutput = sh(script: "node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json", returnStdout: true).trim()
+                    env.CI_ENVIRONMENT_URL = deployOutput
+                    sh "npx playwright test --reporter=html"
+                }
             }
            post {
                 always {
